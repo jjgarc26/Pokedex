@@ -1,11 +1,9 @@
 import { Card } from "react-bootstrap";
-import PokedexNavBar from "../../Utils/PokedexNavBar/PokedexNavBar";
 import PageComponents from "./PageComponents";
 
-function LandingPage() {
+function HomePage() {
   return (
     <Card>
-      <PokedexNavBar />
       <Card.Title>
         <h1>Welcome</h1>
       </Card.Title>
@@ -25,4 +23,4 @@ function LandingPage() {
   );
 }
 
-export default LandingPage;
+export default HomePage;

@@ -1,4 +1,4 @@
-import { Card, Col, Row } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 import CardComponents from "../../Utils/CardComponents";
 
 function PageComponents() {
@@ -8,17 +8,17 @@ function PageComponents() {
         <CardComponents
           title="Pokedex"
           bodyText="Pokedex allows users to search for pokemon informations"
-          // color="info"
+          color="purple"
           textColor="white"
           image="pokedex_icon_small.png"
-          style={{ "background-color": "green" }}
+          navigate="/pokedex"
         />
       </Col>
       <Col>
         <CardComponents
           title="Moves"
           bodyText="Checkout different styles of moves"
-          color="warning"
+          color="blue"
           textColor="white"
           image="moves_icon.png"
         />
@@ -27,7 +27,7 @@ function PageComponents() {
         <CardComponents
           title="Unknowns"
           bodyText="Unknowns maybe just need to add more"
-          color="danger"
+          color="red"
           textColor="white"
           image="pokedex_icon_small.png"
         />
@@ -36,7 +36,7 @@ function PageComponents() {
         <CardComponents
           title="Events"
           bodyText="Get involved with other trainers through out the world"
-          color="success"
+          color="orange"
           textColor="white"
           image="calander.png"
         />

@@ -27,7 +27,6 @@ function PokedexNavBar() {
             style={{ maxHeight: "100px" }}
             navbarScroll
           >
-            <Nav.Link href="/">Home</Nav.Link>
             <NavDropdown
               title="Region"
               id="navbarScrollingDropdown"
@@ -38,6 +37,10 @@ function PokedexNavBar() {
               <NavDropdown.Item eventKey="Hoen">Hoen</NavDropdown.Item>
               <NavDropdown.Item eventKey="Sinoh">Sinoh</NavDropdown.Item>
             </NavDropdown>
+            <Nav.Link href="/">Home</Nav.Link>
+            <Nav.Link href="/pokedex">Pokedex</Nav.Link>
+            <Nav.Link>Moves</Nav.Link>
+            <Nav.Link>Events</Nav.Link>
           </Nav>
           <Form className="d-flex">
             <Form.Control

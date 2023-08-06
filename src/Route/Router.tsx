@@ -1,6 +1,6 @@
 import { Route, createRoutesFromElements } from "react-router";
 import { createBrowserRouter } from "react-router-dom";
-import HomePage from "../Components/LandingPage/HomePage";
+import HomePage from "../Components/HomePage/HomePage";
 import PokedexPage from "../Components/PokedexPage/PokedexPage";
 import RootLayout from "../layout/RootLayout";
 

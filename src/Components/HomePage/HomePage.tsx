@@ -1,5 +1,6 @@
-import { Card } from "react-bootstrap";
+import { Card, Container, Row } from "react-bootstrap";
 import PageComponents from "./PageComponents";
+import SearchBar from "../../Utils/SearchBar";
 
 function HomePage() {
   return (
@@ -17,7 +18,14 @@ function HomePage() {
         }}
       />
       <Card.Body>
-        <PageComponents />
+        <Container>
+          <Row>
+            <SearchBar />
+          </Row>
+          <Row>
+            <PageComponents />
+          </Row>
+        </Container>
       </Card.Body>
     </Card>
   );

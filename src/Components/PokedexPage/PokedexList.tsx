@@ -16,6 +16,9 @@ function PokedexList() {
           </Dropdown>
         </Col>
       </Row>
+      <Row>
+        <h1>list</h1>
+      </Row>
     </Container>
   );
 }

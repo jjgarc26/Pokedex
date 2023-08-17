@@ -7,11 +7,29 @@ import {
   Navbar,
   NavDropdown,
 } from "react-bootstrap";
-function PokedexNavBar() {
-  const [titleName, setTitleName] = useState("Pokedex");
+
+function PokedexNavBar(props: any) {
+  const [titleName, setTitleName] = useState("Kanto Pokedex");
 
   function titleNameHandler(event: any) {
-    // TODO: set limit for API depending on region
+    let pokedexLimit: string;
+    switch (event) {
+      case "Kanto":
+        pokedexLimit = "151";
+        break;
+      case "Johto":
+        pokedexLimit = "200";
+        break;
+      case "Hoen":
+        pokedexLimit = "220";
+        break;
+      case "Johto":
+        pokedexLimit = "240";
+        break;
+      default:
+        pokedexLimit = "151";
+    }
+    props.pokedexLimitHandler(pokedexLimit);
 
     setTitleName(`${event} Pokedex`);
   }

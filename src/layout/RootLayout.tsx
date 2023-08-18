@@ -3,13 +3,13 @@ import { Outlet } from "react-router-dom";
 import { Card } from "react-bootstrap";
 import PokedexNavBar from "../Components/PokedexNavBar/PokedexNavBar";
 import getPokedex from "../Api/apis";
-import PokedexList from "../Components/PokedexPage/PokedexList";
 
 export const PokedexContent = createContext({});
 
 function RootLayout() {
   const [pokedexLimit, setPokedexLimit] = useState("151");
-  const [pokemonList, setPokemonList] = useState({});
+  const [pokemonList, setPokemonList] = useState([]);
+  const [pokedexList, setPokedexList] = useState([]);
 
   function pokedexLimitHandler(limit: string) {
     setPokedexLimit(limit);
@@ -18,15 +18,20 @@ function RootLayout() {
   useEffect(() => {
     async function getPokedexList() {
       const list = await getPokedex(pokedexLimit);
-      console.log(list);
-      return list;
+      setPokemonList(list.slice(0, 151));
+      setPokedexList(list.slice(0, 151));
     }
-    const newList = getPokedexList();
-    setPokemonList(newList);
+    getPokedexList();
+  }, []);
+
+  useEffect(() => {
+    const limit = parseInt(pokedexLimit);
+    const updatedList = pokemonList.slice(0, limit);
+    setPokedexList(updatedList);
   }, [pokedexLimit]);
 
   return (
-    <PokedexContent.Provider value={pokemonList}>
+    <PokedexContent.Provider value={pokedexList}>
       <Card>
         <PokedexNavBar pokedexLimitHandler={pokedexLimitHandler} />
         <Outlet />

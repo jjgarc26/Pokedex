@@ -1,6 +1,5 @@
-export default async function getPokedex(
-  limit: string
-): Promise<object | string> {
+import { PokemonData } from "../Utils/types";
+export default async function getPokedex(limit: string) {
   try {
     const url = `http://127.0.0.1:5000/pokedex/${limit}`;
 
@@ -11,8 +10,9 @@ export default async function getPokedex(
         "Content-Type": "application/json",
       },
     });
-
-    const data = response.json();
+    const data = await response.json();
+    console.log(data);
+    // console.log(JSON.parse(data));
     return data;
   } catch (error) {
     console.error(error);

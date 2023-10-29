@@ -1,39 +1,33 @@
-import { useState, useContext, createContext, useEffect } from "react";
+import { useState, useContext, createContext, useEffect, useMemo } from "react";
 import { Outlet } from "react-router-dom";
 import { Card } from "react-bootstrap";
 import PokedexNavBar from "../Components/PokedexNavBar/PokedexNavBar";
-import getPokedex from "../Api/apis";
+import getPokedex, { getRegionalPokedex } from "../Api/apis";
 
 export const PokedexContent = createContext({});
 
 function RootLayout() {
-  const [pokedexLimit, setPokedexLimit] = useState("151");
-  const [pokemonList, setPokemonList] = useState([]);
+  const [region, setRegion] = useState("kanto");
   const [pokedexList, setPokedexList] = useState([]);
 
-  function pokedexLimitHandler(limit: string) {
-    setPokedexLimit(limit);
+  async function pokedexRegionHandler(region: string) {
+    setRegion(region);
   }
 
   useEffect(() => {
     async function getPokedexList() {
-      const list = await getPokedex(pokedexLimit);
-      setPokemonList(list.slice(0, 151));
-      setPokedexList(list.slice(0, 151));
+      const list = await getRegionalPokedex(region);
+      setPokedexList(list);
     }
     getPokedexList();
-  }, []);
+  }, [region]);
 
-  useEffect(() => {
-    const limit = parseInt(pokedexLimit);
-    const updatedList = pokemonList.slice(0, limit);
-    setPokedexList(updatedList);
-  }, [pokedexLimit]);
+  console.log(pokedexList);
 
   return (
     <PokedexContent.Provider value={pokedexList}>
       <Card>
-        <PokedexNavBar pokedexLimitHandler={pokedexLimitHandler} />
+        <PokedexNavBar pokedexRegionHandler={pokedexRegionHandler} />
         <Outlet />
       </Card>
     </PokedexContent.Provider>

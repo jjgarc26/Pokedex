@@ -12,24 +12,24 @@ function PokedexNavBar(props: any) {
   const [titleName, setTitleName] = useState("Kanto Pokedex");
 
   function titleNameHandler(event: any) {
-    let pokedexLimit: string;
+    let pokedexRegion: string;
     switch (event) {
       case "Kanto":
-        pokedexLimit = "151";
+        pokedexRegion = "kanto";
         break;
       case "Johto":
-        pokedexLimit = "200";
+        pokedexRegion = "johto";
         break;
       case "Hoen":
-        pokedexLimit = "220";
+        pokedexRegion = "hoen";
         break;
-      case "Johto":
-        pokedexLimit = "240";
+      case "Sinoh":
+        pokedexRegion = "sinoh";
         break;
       default:
-        pokedexLimit = "151";
+        pokedexRegion = "kanto";
     }
-    props.pokedexLimitHandler(pokedexLimit);
+    props.pokedexRegionHandler(pokedexRegion);
 
     setTitleName(`${event} Pokedex`);
   }

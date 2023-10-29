@@ -19,3 +19,19 @@ export default async function getPokedex(limit: string) {
     throw error;
   }
 }
+export async function getRegionalPokedex(region: string) {
+  try {
+    const url = `http://127.0.0.1:5000/regions/${region}`;
+    const response = await fetch(url, {
+      method: "GET",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+}
